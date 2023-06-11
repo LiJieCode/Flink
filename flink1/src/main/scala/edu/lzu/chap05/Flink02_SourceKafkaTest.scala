@@ -22,7 +22,10 @@ object Flink02_SourceKafkaTest {
         properties.put("bootstrap.servers", "l9z102:9092")
         properties.setProperty("group.id", "li")
 
-        //
+        // 增加数据源
+        // addSource(new FlinkKafkaConsumer[String]())  这是flink1.13里面的实现
+        // [String]这里的泛型就是，将读取的数据解析成什么样子。
+        // Flink 1.14 之后的版本，new KafkaSource
         val data: DataStream[String] = env.addSource(new FlinkKafkaConsumer[String]("clicks", new SimpleStringSchema(), properties))
 
 

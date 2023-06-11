@@ -30,14 +30,11 @@ object Flink01_SourceBoundedTest {
         val data3: DataStream[String] = env.readTextFile("data/clicks.txt")
 
 
-
         // 打印数据
         // data.print("num")
         // data1.print()
         // data2.print()
         data3.print()
-
-
 
         env.execute()
     }
